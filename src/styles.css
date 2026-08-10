@@ -1,0 +1,229 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   TESEZ — Premium Fashion Design System
+   Editorial luxury. Cream + noir + crimson.
+   Display: Fraunces (serif, optical-size). Body: Inter Tight.
+   ============================================================ */
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-noir: var(--noir);
+  --color-crimson: var(--crimson);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.04), 0 10px 30px -12px oklch(0 0 0 / 0.08);
+  --shadow-lift: 0 20px 60px -20px oklch(0 0 0 / 0.18);
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* warm cream paper, near-black ink, single crimson accent */
+  --cream: oklch(0.972 0.012 80);
+  --paper: oklch(0.985 0.006 80);
+  --noir: oklch(0.13 0.005 60);
+  --ink: oklch(0.18 0.005 60);
+  --crimson: oklch(0.58 0.21 25);
+
+  --background: var(--paper);
+  --foreground: var(--noir);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--noir);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--noir);
+
+  --primary: var(--noir);
+  --primary-foreground: var(--paper);
+
+  --secondary: var(--cream);
+  --secondary-foreground: var(--noir);
+
+  --muted: oklch(0.95 0.008 80);
+  --muted-foreground: oklch(0.45 0.01 60);
+
+  --accent: var(--crimson);
+  --accent-foreground: oklch(1 0 0);
+
+  --destructive: var(--crimson);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.88 0.008 70);
+  --input: oklch(0.88 0.008 70);
+  --ring: var(--noir);
+}
+
+.dark {
+  --background: var(--noir);
+  --foreground: var(--cream);
+  --card: oklch(0.18 0.005 60);
+  --card-foreground: var(--cream);
+  --popover: oklch(0.18 0.005 60);
+  --popover-foreground: var(--cream);
+  --primary: var(--cream);
+  --primary-foreground: var(--noir);
+  --secondary: oklch(0.22 0.006 60);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.22 0.006 60);
+  --muted-foreground: oklch(0.7 0.01 60);
+  --accent: var(--crimson);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: var(--cream);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144;
+  }
+  ::selection {
+    background: var(--color-noir);
+    color: var(--color-paper);
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+@utility container-luxe {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 88rem;
+  @media (min-width: 768px) { padding-inline: 2.5rem; }
+  @media (min-width: 1280px) { padding-inline: 4rem; }
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  font-size: clamp(3rem, 9vw, 9rem);
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
+  font-size: clamp(2.25rem, 6vw, 5rem);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@utility link-underline {
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s var(--ease-luxe);
+  }
+  &:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+}
+
+@utility hover-lift {
+  transition: transform 0.6s var(--ease-luxe), box-shadow 0.6s var(--ease-luxe);
+  &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+}
+
+@utility marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility fade-up {
+  animation: fade-up 0.9s var(--ease-luxe) both;
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.15); }
+}
+
+@utility ken-burns {
+  animation: ken-burns 18s ease-out both;
+}
